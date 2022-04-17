@@ -1,0 +1,57 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Personaje/assets/salto_comun.png" type="Texture" id=1]
+[ext_resource path="res://Personaje/assets/salto_doble4.png" type="Texture" id=3]
+[ext_resource path="res://Personaje/assets/caminar1.png" type="Texture" id=4]
+[ext_resource path="res://Personaje/assets/salto_doble2.png" type="Texture" id=5]
+[ext_resource path="res://Personaje/assets/salto_doble3.png" type="Texture" id=6]
+[ext_resource path="res://Personaje/assets/caminar2.png" type="Texture" id=7]
+[ext_resource path="res://Personaje/assets/danio.png" type="Texture" id=8]
+[ext_resource path="res://Personaje/assets/quieto.png" type="Texture" id=9]
+[ext_resource path="res://Personaje.gd" type="Script" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "salto",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "danio",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "caminar",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "doble_salto",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "quieto",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24.5, 35.5 )
+
+[node name="Personaje" type="KinematicBody2D"]
+position = Vector2( 1, 1 )
+script = ExtResource( 10 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 2, -3 )
+scale = Vector2( 0.358333, 0.349502 )
+frames = SubResource( 1 )
+animation = "quieto"
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.5, -3.5 )
+shape = SubResource( 2 )
